@@ -1,0 +1,113 @@
+
+# TCS NQT PYQS
+
+# Q1. Given a string S(input) consisting of * and &. The length of the string is variable. The task is to find the
+# minimum number of * and & required to make it a valid string. The string is considered valid if the number of
+# * and # are equal. The * and & can be at any position in the string.
+
+# Note: The output will be a positive or negative integer based on number of * and & in the input string.
+# (* > &) : Positive integer
+# (& > *) : Negative integer
+# (&=*): 0
+# Example 1:
+# Input
+# &&&*** → Value of S
+# Output
+# 0 ---> number of * and & are equal
+# Example 2:
+# Input
+# &&&***& → Value of S
+# Output
+# -1 ---> number of & is more than *
+# Example 3:
+# Input
+# &*** → Value of S
+# Output
+# 2 ---> number of * is more than &
+
+n=input()
+ct=0
+for i in n:
+    if i=='&':
+        ct-=1
+    elif i=="*":
+        ct+=1
+print(ct)
+
+# Q2. Given a non-negative integer array Arr having size N. Each element of the array will carry a different
+# value. This means no two elements can have the same values.The candidate has to do this with minimal
+# changes in the original value of the elements, making every element as least as much value as it originally
+# had.
+# Example 1:
+# Input
+# 3 -> Value of N, represents size of Arr
+# 2 -> Value of Arr[0]
+# 2-> Value of Arr[1]
+# 4-> Value of Arr[2]
+# Output
+# 9
+# Explanation:
+# As two elements have the same value, max value for the one of them needs to be incremented to 3.
+# He can set the array with 2+3+4=9
+# Example 2:
+# Input
+# 2 -> Value of N, represents size of Arr
+# 3 -> Value of Arr[0]
+# 4-> Value of Arr[1]
+# 5-> Value of Arr[2]
+# Output
+# Wrong Input
+# Explanation:
+# Here N=2, so we need to provide value of only two elements but we are providing value of three elements
+# so result is “Wrong Input”
+
+
+
+def minimize_array_sum(N, Arr):
+    if len(Arr) != N:
+        return "Wrong Input"
+    
+    Arr.sort()
+    
+    for i in range(1, N):
+        if Arr[i] <= Arr[i - 1]:
+            Arr[i] = Arr[i - 1] + 1
+    
+    return sum(Arr)
+
+N=int(input())
+Arr=list(map(int,input().split()))
+print(minimize_array_sum(N, Arr))
+
+
+# Q3. Joseph is learning digital logic subject which will be for his next semester. He usually tries to solve unit
+# assignment problems before the lecture. Today, he got one tricky question. The problem statement is “A
+# positive integer has been given as an input. Convert decimal value to binary representation. Toggle all bits
+# of it after the most significant bit including the most significant bit. Print the positive integer value after
+# toggling all bits”.
+
+# Example 1
+# Input:
+# 10 ---> Integer
+# Output:
+# 5 → result - Integer
+# Explanation:
+# Binary representation of 10 is 1010. After toggling the bits (1010), will get 0101, which represents “5”.
+# Hence the output will print “5”.
+# Example 2
+# Input:
+# 101 ---> Integer
+# Output:
+# Wrong input → result - String
+# Explanation:
+# Given integer “101” is out of range. Hence the output will print “Wrong input”.
+
+n = int(input())
+if not (1 <= n <= 100):  
+    print("Wrong input")
+else:
+    d = bin(n)[2:]  
+    f = d.maketrans('01', '10')  
+    toggled = d.translate(f) 
+    v = int(toggled, 2)  
+    print(v)
