@@ -1,1 +1,60 @@
+# Q1. A supermarket maintains a pricing format for all its products. A value N printed on each product. When
+# the scanner reads the value N on the item, the product of all the digits in the value N is the price of the item.
+# The task is to design a software such that given the code of any item N the product(multiplication) of all the
+# digits of value should be computed(price).
+# Example 1:
+# Input:
+# 5244 -->Value of N
+# Output:
+# 160 -->Price
+# Explanation:
+# From the input above:
+# Product of the digits: 5,1,4,4
+# 5*2*4*4 = 160
+# Hence Output is 160
+
+n = int(input())
+d = 1
+
+for i in str(n):
+    d *= int(i)
+
+print(d)
+
+
+# Q2. An event management company has come up with a unique idea of printing their event tickets. Based
+# on the ticket number combination (str1), the visitor is directed towards a particular class of audience. The
+# task is to create a program/application to fetch the ticket number based on the following conditions:
+# Any occurrences of digits EF, 56 and G, & should be deleted
+# The characters EF should be in the same format.
+# Example 1:
+# Input:
+# 4523EF58G -> Value of STR1
+# Output:
+# 452358 -> After removal of characters
+# ‘EF’ and ‘G’
+# Example 2:
+# Input:
+# E12F35G58 -> Value of STR1
+# Output:
+# E12F3558 -> After removal of character ‘G’
+# Explanation:
+# In the above example, characters E and F are not together. So, they won’t be deleted. The output will be with
+# only character G removal.
+
+s = input("Enter a string: ")
+i = 0
+
+while i < len(s):
+    if s[i:i+2] == 'EF':
+        s = s[:i] + s[i+2:]  # Removes 'EF'
+        continue  # Check the current index again
+    elif s[i] == 'G':
+        s = s[:i] + s[i+1:]  # Removes 'G'
+        continue  # Check the current index again
+    else:
+        i += 1
+
+print(s)
+
 
