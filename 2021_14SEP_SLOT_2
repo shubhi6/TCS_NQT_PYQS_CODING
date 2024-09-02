@@ -1,0 +1,93 @@
+#  *  A chocolate factory is packing chocolates into the packets. The chocolate packets here 
+#  * represent an array of N number of integer values. The task is to find the empty packets(0) of 
+#  * chocolate and push it to the end of the conveyor belt(array). Click here to see solution
+# Example 1 : N=8 and arr = [4,5,0,1,9,0,5,0].
+# There are 3 empty packets in the given set. These 3 empty packets represented as O should be pushed towards the end of the array
+ 
+def c(arr):
+    n=len(arr)
+    ct=0
+    for i in range(n):
+        if arr[i]==0:
+            ct+=1
+    return ct
+arr=list(map(int,input().split()))
+print(c(arr))
+
+#  * You are given an array of integers, arr,
+# and an integer k. Your task is to find and print the maximum number in
+# each contiguous window of size k.
+# Sample test case 1:
+# Input:
+# arr = [1, 3, -1, -3, 5, 3, 6, 7] k=3
+# Output:
+# [3, 3, 5, 5, 6, 7]
+def c(arr, k):
+    n = len(arr)
+    if n * k == 0:
+        return []
+    if k == 1:
+        return arr
+
+    result = []
+    for i in range(n - k + 1):
+        window_max = max(arr[i:i+k])
+        result.append(window_max)
+    
+    return result
+
+arr = list(map(int, input().split()))
+k = int(input())
+print(c(arr, k))
+
+
+#  * Given a number N, your task is to calculate and print the sum of the table of N.
+# Sample test case 1:
+# Input:
+# N = 10
+# ouput: 55 * 10 = 550
+# 550
+# Sample test case 2:
+# Input:
+# N = 68 N * (1-10) -> 55 * 68 = 3740
+# ouput:
+# 3740
+
+def tb(n):
+    d=10*(10+1)//2
+    d=d*n
+    return d
+n = int(input())
+print(tb(n))
+
+
+
+#  * Given two integers, a and b, your task is to determine the sum of the cubes of
+# all numbers in the range from a to b.
+# sample test case
+# a = 4
+# b = 9
+# ouput: 1989
+
+def cd(s,e):
+    t=0
+    for i in range(s,e+1):
+        i=i**3
+        t+=i
+    return t
+s,e=map(int,input().split())
+print(cd(s,e))
+
+
+#  * An automobile company manufactures both a two wheeler (TW) and a four wheeler (FW). A
+# company manager wants to make the production of both types of vehicle according to the
+# given data below:
+# ● 1st data, Total number of vehicle (two-wheeler + four-wheeler)=v
+# ● 2nd data, Total number of wheels = W
+# The task is to find how many two-wheelers as well as four-wheelers need to manufacture as
+# per the given data.
+v = int(input())
+w = int(input())
+x = (4 * v - w) // 2
+y = (w - 2 * v) // 2
+print(x,y)
